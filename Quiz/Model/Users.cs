@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quiz
+namespace Quiz.Model
 {
     [Serializable]
     public class Users : List<User>
@@ -19,7 +19,7 @@ namespace Quiz
         public bool SignIn(string login, string password, DateTime birthday)
         {
             User user = FindUser(login);
-            if (!CheckUserExists(login))
+            if (!CheckUserExists(login)) 
                 return false;
             return user.Password == password;
         }
