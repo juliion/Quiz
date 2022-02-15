@@ -1,7 +1,8 @@
 ﻿using System;
 
-namespace Quiz
+namespace Quiz.Model
 {
+    [Serializable]
     public class User
     {
         public string Login { get; set; }

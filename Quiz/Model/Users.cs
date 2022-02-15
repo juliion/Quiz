@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quiz
+namespace Quiz.Model
 {
-    public class Users
+    [Serializable]
+    public class Users : List<User>
     {
-        private List<User> _users;
         public bool SignUp(string login, string password, DateTime birthday)
         {
             if (CheckUserExists(login))
                 return false; 
-            _users.Add(new User(login, password, birthday));
+            this.Add(new User(login, password, birthday));
             return true;
         }
         public bool SignIn(string login, string password, DateTime birthday)
         {
             User user = FindUser(login);
-            if (!CheckUserExists(login))
+            if (!CheckUserExists(login)) 
                 return false;
             return user.Password == password;
         }
@@ -29,7 +29,7 @@ namespace Quiz
         }
         private User FindUser(string login)
         {
-            return _users.FirstOrDefault(u => u.Login == login);
+            return this.FirstOrDefault(u => u.Login == login);
         }
     }
 }
