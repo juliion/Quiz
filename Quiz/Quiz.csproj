@@ -48,6 +48,7 @@
     <Compile Include="Services\DataManager.cs" />
     <Compile Include="Model\Users.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Services\Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
