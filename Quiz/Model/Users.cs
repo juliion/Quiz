@@ -9,14 +9,14 @@ namespace Quiz.Model
     [Serializable]
     public class Users : List<User>
     {
-        public bool SignUp(string login, string password, DateTime birthday)
+        public bool SignUp(string login, string password, string birthday)
         {
             if (CheckUserExists(login))
                 return false; 
-            this.Add(new User(login, password, birthday));
+            this.Add(new User(login, password, DateTime.Parse(birthday)));
             return true;
         }
-        public bool SignIn(string login, string password, DateTime birthday)
+        public bool SignIn(string login, string password)
         {
             User user = FindUser(login);
             if (!CheckUserExists(login)) 

@@ -8,7 +8,7 @@ namespace Quiz.Services
 {
     public static class Menu
     {
-        public static void Display()
+        public static void DisplayMainMenu()
         {
             Console.Clear();
             Console.WriteLine();
@@ -29,6 +29,12 @@ namespace Quiz.Services
             Console.Write("\n> Продлжить (y/n)? - ");
             string answer = Console.ReadLine();
             return answer == "y" ? true : false;
+        }
+        public static void DisplayRegMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("\t    1 - Войти");
+            Console.WriteLine("\t    2 - Зарегестрироваться");
         }
     }
 }
