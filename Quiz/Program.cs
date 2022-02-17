@@ -14,8 +14,7 @@ namespace Quiz
         static void Main(string[] args)
         {
             Users users;
-            string fileDir = AppDomain.CurrentDomain.BaseDirectory;
-            string path = Path.Combine(fileDir, "Data/users.bin");
+            string path = @"..\..\Data\users.dat";
             if (File.Exists(path))
                 users = DataManager.LoadUsers(path);
             else
@@ -70,6 +69,7 @@ namespace Quiz
                                 password = Console.ReadLine();
                                 isSignUp = users.SignUp(login, password, birthday);
                             } while (!isSignUp);
+                            DataManager.SaveUsers(path, users);
                         }
                         break;
                     default:
