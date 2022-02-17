@@ -8,6 +8,13 @@ namespace Quiz.Model
 {
     public class Question
     {
-        Answer[] answers { get; set; } 
+        public string Text { get; set; }
+        public List<Answer> Answers { get; set; }
+
+        public Question(string text, List<Answer> answers)
+        {
+            Text = text;
+            Answers = answers;
+        }
     }
 }
