@@ -7,7 +7,7 @@ using System.IO;
 using Quiz.Services;
 using Quiz.Model;
 
-namespace Quiz
+namespace QuizApp
 {
     class Program
     {
