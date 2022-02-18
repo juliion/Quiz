@@ -2,6 +2,7 @@
 {
     public enum QuizType
     {
-
+        History,
+        Physics
     }
 }
