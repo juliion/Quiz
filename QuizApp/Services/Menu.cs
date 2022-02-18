@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quiz.Services
+namespace QuizApp.Services
 {
     public static class Menu
     {
