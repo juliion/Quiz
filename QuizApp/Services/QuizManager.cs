@@ -20,9 +20,10 @@ namespace QuizApp.Services
                 _quizzes.Add(DataManager.LoadQuiz(filename));
             }
         }
-        public int[] StartQuiz(int ind)
+        public int[] StartQuiz(QuizType quizType, string title)
         {
-            List <Question> questions = _quizzes[ind].Questions;
+            Quiz curQuiz = _quizzes.Find((quiz) => quiz.Type == quizType && quiz.Title == title);
+            List <Question> questions = curQuiz.Questions;
             int[] userAnswers = new int[questions.Count];
             int indUA = 0;
             foreach (var question in questions)
@@ -38,6 +39,16 @@ namespace QuizApp.Services
                 indUA++;
             }
             return userAnswers;
+        }
+        public List<string> GetQuizzesTitles(QuizType type)
+        {
+            List<string> res = new List<string>();
+            foreach (var quiz in _quizzes)
+            {
+                if (quiz.Type == type)
+                    res.Add(quiz.Title);
+            }
+            return res;
         }
     }
 }
