@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using QuizApp.Model;
 
 namespace QuizApp.Services
@@ -21,8 +24,10 @@ namespace QuizApp.Services
                 res = (Users)bf.Deserialize(fs);
             return res;
         }
-        public static void SaveQuiz(string path, Quiz quiz)
+        public static async Task SaveQuiz(string path, Quiz quiz)
         {
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+                await JsonSerializer.SerializeAsync<Quiz>(fs, quiz);
         }
         public static void LoadQuiz(string path)
         {
