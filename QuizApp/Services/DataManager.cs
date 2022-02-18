@@ -3,6 +3,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 using System.Text.Json;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using System.Text.Json.Serialization;
 using QuizApp.Model;
 
@@ -26,7 +28,11 @@ namespace QuizApp.Services
         }
         public static void SaveQuiz(string path, Quiz quiz)
         {
-            string jsonString = JsonSerializer.Serialize<Quiz>(quiz);
+            string jsonString = JsonSerializer.Serialize<Quiz>(quiz, new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            });
             File.WriteAllText(path, jsonString);
         }
         public static Quiz LoadQuiz(string path)
