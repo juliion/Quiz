@@ -24,13 +24,16 @@ namespace QuizApp.Services
                 res = (Users)bf.Deserialize(fs);
             return res;
         }
-        public static async Task SaveQuiz(string path, Quiz quiz)
+        public static void SaveQuiz(string path, Quiz quiz)
         {
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
-                await JsonSerializer.SerializeAsync<Quiz>(fs, quiz);
+            string jsonString = JsonSerializer.Serialize<Quiz>(quiz);
+            File.WriteAllText(path, jsonString);
         }
-        public static void LoadQuiz(string path)
+        public static Quiz LoadQuiz(string path)
         {
+            string jsonString = File.ReadAllText(path);
+            Quiz quiz = JsonSerializer.Deserialize<Quiz>(jsonString);
+            return quiz;
         }
     }
 }

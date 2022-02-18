@@ -12,6 +12,10 @@ namespace QuizApp.Model
         public string Title { get; set; }
         public List<Question> Questions { get; set; }
 
+        public Quiz()
+        {
+        }
+
         public Quiz(QuizType type, string title, List<Question> questions)
         {
             Type = type;
