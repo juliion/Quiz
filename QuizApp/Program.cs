@@ -13,6 +13,7 @@ namespace QuizApp
     {
         static void Main(string[] args)
         {
+            QuizManager qm = new QuizManager();
             Users users;
             string path = @"..\..\Data\users.dat";
             if (File.Exists(path))
@@ -31,11 +32,11 @@ namespace QuizApp
                             do
                             {
                                 Console.Clear();
-                                if(!isSignIn)
+                                if (!isSignIn)
                                 {
                                     Console.WriteLine("Неверный логин или пароль!");
                                     Console.WriteLine("Попробуйте снова");
-                                }   
+                                }
                                 Console.WriteLine("Введите логин и пароль для входа");
                                 Console.Write("Логин: ");
                                 login = Console.ReadLine();
@@ -83,6 +84,14 @@ namespace QuizApp
                 switch (Menu.GetChoice())
                 {
                     case 1:
+                        Menu.DisplayQiuzMenu();
+                        Console.Write("раздел знаний викторины:");
+                        int choiceQuiz = Int32.Parse(Console.ReadLine());
+                        List<string> titles = qm.GetQuizzesTitles((QuizType)choiceQuiz - 1);
+                        Menu.DisplayQuizzesTitlesMenu(titles);
+                        Console.Write("Выберете тему:");
+                        int choiceTitle = Int32.Parse(Console.ReadLine());
+                        qm.StartQuiz((QuizType)choiceQuiz - 1, titles[choiceTitle - 1]);
                         break;
                     case 2:
                         break;

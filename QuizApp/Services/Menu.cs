@@ -36,5 +36,21 @@ namespace QuizApp.Services
             Console.WriteLine("\t    1 - Войти");
             Console.WriteLine("\t    2 - Зарегестрироваться");
         }
+        public static void DisplayQiuzMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("\t    1 - История");
+            Console.WriteLine("\t    2 - Физика");
+        }
+        public static void DisplayQuizzesTitlesMenu(List<string> titles)
+        {
+            Console.Clear();
+            int num = 1;
+            foreach (var title in titles)
+            {
+                Console.WriteLine($"\t    {num} - {title}");
+                num++;
+            }
+        }
     }
 }

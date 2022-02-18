@@ -1,1 +1,193 @@
-{"Type":0,"Title":"lalal","Questions":[{"Text":"Who are you?","Answers":[{"Text":"huy","IsCorect":true},{"Text":"no","IsCorect":false}]}]}{"Type":0,"Title":"lalal","Questions":[{"Text":"Who are you?","Answers":[{"Text":"huy","IsCorect":true},{"Text":"no","IsCorect":false}]}]}
+{
+  "Type": 0,
+  "Title": "История и культура Древнего Египта",
+  "Questions": [
+    {
+      "Text": "Как именно в Древнем Египте назывался сборник религиозно-магических заклинаний?",
+      "Answers": [
+        {
+          "Text": "Книга богов",
+          "IsCorect": false
+        },
+        {
+          "Text": "Книга жизни",
+          "IsCorect": false
+        },
+        {
+          "Text": "Книга мёртвых",
+          "IsCorect": true
+        }
+      ]
+    },
+    {
+      "Text": "Как называли свою страну древние египтяне?",
+      "Answers": [
+        {
+          "Text": "белая земля",
+          "IsCorect": false
+        },
+        {
+          "Text": "черная земля",
+          "IsCorect": true
+        },
+        {
+          "Text": "солнечная земля",
+          "IsCorect": false
+        }
+      ]
+    },
+    {
+      "Text": "Как зовут древнеегипетскую богиню радости, любви и веселья?",
+      "Answers": [
+        {
+          "Text": "Бастет",
+          "IsCorect": true
+        },
+        {
+          "Text": "Ба",
+          "IsCorect": false
+        },
+        {
+          "Text": "Бенну",
+          "IsCorect": false
+        }
+      ]
+    },
+    {
+      "Text": "Как зовут древнеегипетскую богиню истины и мирового порядка?",
+      "Answers": [
+        {
+          "Text": "Месхенет",
+          "IsCorect": false
+        },
+        {
+          "Text": "Мафдет",
+          "IsCorect": false
+        },
+        {
+          "Text": "Маат",
+          "IsCorect": true
+        }
+      ]
+    },
+    {
+      "Text": "В честь какого фараона была построена самая большая пирамида?",
+      "Answers": [
+        {
+          "Text": "Рамзес II",
+          "IsCorect": false
+        },
+        {
+          "Text": "Хеопс",
+          "IsCorect": true
+        },
+        {
+          "Text": "Эхнатон",
+          "IsCorect": false
+        }
+      ]
+    },
+    {
+      "Text": "Отметьте годы жизни фараона Хеопса",
+      "Answers": [
+        {
+          "Text": "2635—2611 гг. до н. э.",
+          "IsCorect": false
+        },
+        {
+          "Text": "2635—2611 гг. до н. э.",
+          "IsCorect": false
+        },
+        {
+          "Text": "ок. 2589—2566 гг. до н. э.",
+          "IsCorect": true
+        }
+      ]
+    },
+    {
+      "Text": "Как зовут древнеегипетского бога возрождения, исцеления и растительности?",
+      "Answers": [
+        {
+          "Text": "Нехебкау",
+          "IsCorect": false
+        },
+        {
+          "Text": "Нехбет",
+          "IsCorect": false
+        },
+        {
+          "Text": "Нефертум",
+          "IsCorect": true
+        }
+      ]
+    },
+    {
+      "Text": "Как зовут древнеегипетского бога Солнца?",
+      "Answers": [
+        {
+          "Text": "Раттауи",
+          "IsCorect": false
+        },
+        {
+          "Text": "Рути",
+          "IsCorect": false
+        },
+        {
+          "Text": "Ра",
+          "IsCorect": true
+        }
+      ]
+    },
+    {
+      "Text": "Какое животное или членистоногое ассоциировалось с богиней Бастет?",
+      "Answers": [
+        {
+          "Text": "пантера",
+          "IsCorect": false
+        },
+        {
+          "Text": "кошка",
+          "IsCorect": true
+        },
+        {
+          "Text": "скорпион",
+          "IsCorect": false
+        }
+      ]
+    },
+    {
+      "Text": "Какое животное или членистоногое ассоциировалось с богиней Бастет?",
+      "Answers": [
+        {
+          "Text": "пантера",
+          "IsCorect": false
+        },
+        {
+          "Text": "кошка",
+          "IsCorect": true
+        },
+        {
+          "Text": "скорпион",
+          "IsCorect": false
+        }
+      ]
+    },
+    {
+      "Text": "Отметьте годы жизни фараона Тутанхамона",
+      "Answers": [
+        {
+          "Text": "1279 — 1213 гг. до н. э.",
+          "IsCorect": false
+        },
+        {
+          "Text": "ок. 2635—2611 гг. до н. э.",
+          "IsCorect": false
+        },
+        {
+          "Text": "ок. 1332—1323 гг. до н. э.",
+          "IsCorect": true
+        }
+      ]
+    }
+  ]
+}
