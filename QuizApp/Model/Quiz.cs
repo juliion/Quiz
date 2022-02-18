@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quiz.Model
+namespace QuizApp.Model
 {
     public class Quiz
     {

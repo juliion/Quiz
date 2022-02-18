@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Quiz.Model;
+using QuizApp.Model;
 
-namespace Quiz.Services
+namespace QuizApp.Services
 {
     public static class DataManager
     {
@@ -20,6 +20,12 @@ namespace Quiz.Services
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
                 res = (Users)bf.Deserialize(fs);
             return res;
+        }
+        public static void SaveQuiz(string path, Quiz quiz)
+        {
+        }
+        public static void LoadQuiz(string path)
+        {
         }
     }
 }

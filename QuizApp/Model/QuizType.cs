@@ -1,4 +1,4 @@
-﻿namespace Quiz.Model
+﻿namespace QuizApp.Model
 {
     public enum QuizType
     {

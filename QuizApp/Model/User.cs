@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Quiz.Model
+namespace QuizApp.Model
 {
     [Serializable]
     public class User
