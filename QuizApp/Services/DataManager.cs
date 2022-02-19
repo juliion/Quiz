@@ -41,5 +41,20 @@ namespace QuizApp.Services
             Quiz quiz = JsonSerializer.Deserialize<Quiz>(jsonString);
             return quiz;
         }
+        public static void SaveScores(string path, Scores scores)
+        {
+            string jsonString = JsonSerializer.Serialize<Scores>(scores, new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            });
+            File.WriteAllText(path, jsonString);
+        }
+        public static Scores LoadScores(string path)
+        {
+            string jsonString = File.ReadAllText(path);
+            Scores scores = JsonSerializer.Deserialize<Scores>(jsonString);
+            return scores;
+        }
     }
 }

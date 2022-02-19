@@ -15,7 +15,6 @@ namespace QuizApp.Model
         {
         }
 
-
         public Question(string text, List<Answer> answers)
         {
             Text = text;

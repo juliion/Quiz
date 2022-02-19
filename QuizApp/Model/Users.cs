@@ -27,7 +27,7 @@ namespace QuizApp.Model
         {
             return FindUser(login) != null;
         }
-        private User FindUser(string login)
+        public User FindUser(string login)
         {
             return this.FirstOrDefault(u => u.Login == login);
         }
