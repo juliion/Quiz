@@ -20,25 +20,29 @@ namespace QuizApp.Services
                 _quizzes.Add(DataManager.LoadQuiz(filename));
             }
         }
-        public int[] StartQuiz(QuizType quizType, string title)
+        public Score StartQuiz(QuizType quizType, string title, User curUser)
         {
             Quiz curQuiz = _quizzes.Find((quiz) => quiz.Type == quizType && quiz.Title == title);
             List <Question> questions = curQuiz.Questions;
-            int[] userAnswers = new int[questions.Count];
-            int indUA = 0;
-            foreach (var question in questions)
+            int countRightAnswers = 0;
+            int selectedAnswer;
+            for (int i = 0; i < questions.Count; i++)
             {
+                Question question = questions[i];
                 Console.Clear();
-                Console.WriteLine(question.Text);
+                Console.WriteLine($"{i + 1}) {question.Text}");
                 Console.WriteLine();
-                foreach (var answer in question.Answers)
+                List<Answer> answers = question.Answers;
+                for (int j = 0; j < answers.Count; j++)
                 {
-                    Console.WriteLine(answer.Text);
+                    Answer answer = answers[j];
+                    Console.WriteLine($"{j + 1} - {answer.Text}");
                 }
-                 userAnswers[indUA] = Int32.Parse(Console.ReadLine());
-                indUA++;
+                selectedAnswer = Int32.Parse(Console.ReadLine());
+                if (answers[selectedAnswer - 1].IsCorect)
+                    countRightAnswers++;
             }
-            return userAnswers;
+            return new Score(curUser, curQuiz, countRightAnswers);
         }
         public List<string> GetQuizzesTitles(QuizType type)
         {

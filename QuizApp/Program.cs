@@ -13,71 +13,23 @@ namespace QuizApp
     {
         static void Main(string[] args)
         {
+            UserManager um = new UserManager();
             QuizManager qm = new QuizManager();
-            Users users;
-            string path = @"..\..\Data\users.dat";
-            if (File.Exists(path))
-                users = DataManager.LoadUsers(path);
-            else
-                users = new Users();
+            int choice;
             do
             {
                 Menu.DisplayRegMenu();
-                switch (Menu.GetChoice())
+                choice = Menu.GetChoice();
+                switch (choice)
                 {
                     case 1:
-                        {
-                            string login, password;
-                            bool isSignIn = true;
-                            do
-                            {
-                                Console.Clear();
-                                if (!isSignIn)
-                                {
-                                    Console.WriteLine("Неверный логин или пароль!");
-                                    Console.WriteLine("Попробуйте снова");
-                                }
-                                Console.WriteLine("Введите логин и пароль для входа");
-                                Console.Write("Логин: ");
-                                login = Console.ReadLine();
-                                Console.Write("Пароль: ");
-                                password = Console.ReadLine();
-                                isSignIn = users.SignIn(login, password);
-                            } while (!isSignIn);
-                        }
+                        um.DisplaySignIn();
                         break;
                     case 2:
-                        {
-                            string login, password, birthday = "";
-                            bool isSignUp = true;
-                            do
-                            {
-                                Console.Clear();
-                                if (!isSignUp)
-                                {
-                                    Console.WriteLine("Пользователь с таким логином уже существует!");
-                                    Console.WriteLine("Попробуйте снова");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Введите дату рождения в формате(yy-mm-dd)");
-                                    birthday = Console.ReadLine();
-                                }
-                                Console.WriteLine("Придумайте логин и пароль");
-                                Console.Write("Логин: ");
-                                login = Console.ReadLine();
-                                Console.Write("Пароль: ");
-                                password = Console.ReadLine();
-                                isSignUp = users.SignUp(login, password, birthday);
-                            } while (!isSignUp);
-                            DataManager.SaveUsers(path, users);
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("  Неверный символ!");
+                        um.DisplaySignUp();
                         break;
                 }
-            } while (Menu.AllowContinue());
+            } while (choice < 1 || choice > 2);
             do
             {
                 Menu.DisplayMainMenu();
