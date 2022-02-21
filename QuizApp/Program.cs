@@ -49,6 +49,7 @@ namespace QuizApp
                         sm.DisplayScore(s);
                         break;
                     case 2:
+                        sm.DispayScoresUser(um.CurUser.Login);
                         break;
                     case 3:
                         break;

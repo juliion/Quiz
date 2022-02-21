@@ -34,5 +34,17 @@ namespace QuizApp.Services
             Console.WriteLine($"Ваш результат {score.RightAnswers} из {allRightAnswers}");
             Console.WriteLine($"{score.RightAnswers * 100 / allRightAnswers} %");
         }
+        public void DispayScoresUser(string login)
+        {
+            Console.Clear();
+            foreach (var score in _scores)
+            {
+                if(score.User.Login == login)
+                {
+                    int allRightAnswers = score.Quiz.Questions.Count;
+                    Console.WriteLine($"{score.Quiz.Title} - {score.RightAnswers}/{allRightAnswers} ({score.RightAnswers * 100 / allRightAnswers}%)");
+                }
+            }
+        }
     }
 }
