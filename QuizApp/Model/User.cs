@@ -9,6 +9,10 @@ namespace QuizApp.Model
         public string Password { get; set; }
         public DateTime Birthday { get; set; }
 
+        public User()
+        {
+        }
+
         public User(string login, string password, DateTime birthday)
         {
             Login = login;

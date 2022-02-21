@@ -21,9 +21,18 @@ namespace QuizApp.Services
             else
                 _scores = new Scores();
         }
-        public void AddScore(User user, Quiz quiz)
+        public void AddScore(Score score)
         {
-
+            _scores.Add(score);
+            DataManager.SaveScores(_fileName, _scores);
+        }
+        public void DisplayScore(Score score)
+        {
+            Console.Clear();
+            Quiz quiz = score.Quiz;
+            int allRightAnswers = quiz.Questions.Count;
+            Console.WriteLine($"Ваш результат {score.RightAnswers} из {allRightAnswers}");
+            Console.WriteLine($"{score.RightAnswers * 100 / allRightAnswers} %");
         }
     }
 }

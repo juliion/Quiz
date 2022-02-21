@@ -15,6 +15,7 @@ namespace QuizApp
         {
             UserManager um = new UserManager();
             QuizManager qm = new QuizManager();
+            ScoreManager sm = new ScoreManager();
             int choice;
             do
             {
@@ -43,7 +44,9 @@ namespace QuizApp
                         Menu.DisplayQuizzesTitlesMenu(titles);
                         Console.Write("Выберете тему:");
                         int choiceTitle = Int32.Parse(Console.ReadLine());
-                        qm.StartQuiz((QuizType)choiceQuiz - 1, titles[choiceTitle - 1]);
+                        Score s = qm.StartQuiz((QuizType)choiceQuiz - 1, titles[choiceTitle - 1], um.CurUser);
+                        sm.AddScore(s);
+                        sm.DisplayScore(s);
                         break;
                     case 2:
                         break;

@@ -8,6 +8,9 @@ namespace QuizApp.Model
 {
     public class Scores : List<Score>
     {
+        public Scores()
+        {
 
+        }
     }
 }
