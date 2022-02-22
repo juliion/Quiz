@@ -70,5 +70,47 @@ namespace QuizApp.Services
             } while (!isSignIn);
             CurUser = Users.FindUser(login);
         }
+        public void DisplayChangeLogin()
+        {
+            string newLogin;
+            bool loginChanged = true;
+            do
+            {
+                Console.Clear();
+                if (!loginChanged)
+                {
+                    Console.WriteLine("Пользователь с таким логином уже существует!");
+                    Console.WriteLine("Попробуйте снова");
+                }
+                Console.WriteLine($"Текущий логин: {CurUser.Login}");
+                Console.Write("Введите новый логин: ");
+                newLogin = Console.ReadLine();
+                loginChanged = Users.ChangeUserLogin(CurUser.Login, newLogin);
+            } while (!loginChanged);
+            DataManager.SaveUsers(_fileName, Users);
+            CurUser = Users.FindUser(newLogin);
+        }
+        public void DisplayChangePassword()
+        {
+            string newPassword, password;
+            bool passwordCorrect = true;
+            do
+            {
+                Console.Clear();
+                if (!passwordCorrect)
+                {
+                    Console.WriteLine("Неверный пароль!");
+                    Console.WriteLine("Попробуйте снова");
+                }
+                Console.Write("Введите ваш старый пароль: ");
+                password = Console.ReadLine();
+                passwordCorrect = Users.CheckPassword(CurUser.Login, password);
+            } while (!passwordCorrect);
+            Console.Write("Введите новый пароль: ");
+            newPassword = Console.ReadLine();
+            Users.ChangeUserPassword(CurUser.Login, newPassword);
+            DataManager.SaveUsers(_fileName, Users);
+            CurUser = Users.FindUser(CurUser.Login);
+        }
     }
 }
