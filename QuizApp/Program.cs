@@ -39,7 +39,7 @@ namespace QuizApp
                     case 1:
                         {
                             Menu.DisplayQiuzMenu();
-                            Console.Write("раздел знаний викторины:");
+                            Console.Write("Выберете раздел знаний викторины:");
                             int choiceQuiz = Int32.Parse(Console.ReadLine());
                             List<string> titles = qm.GetQuizzesTitles((QuizType)choiceQuiz - 1);
                             Menu.DisplayQuizzesTitlesMenu(titles);
@@ -57,7 +57,7 @@ namespace QuizApp
                     case 3:
                         {
                             Menu.DisplayQiuzMenu();
-                            Console.Write("раздел знаний викторины:");
+                            Console.Write("Выберете раздел знаний викторины:");
                             int choiceQuiz = Int32.Parse(Console.ReadLine());
                             List<string> titles = qm.GetQuizzesTitles((QuizType)choiceQuiz - 1);
                             Menu.DisplayQuizzesTitlesMenu(titles);
