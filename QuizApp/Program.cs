@@ -46,7 +46,8 @@ namespace QuizApp
                         int choiceTitle = Int32.Parse(Console.ReadLine());
                         Score s = qm.StartQuiz((QuizType)choiceQuiz - 1, titles[choiceTitle - 1], um.CurUser);
                         sm.AddScore(s);
-                        sm.DisplayScore(s);
+                        Console.Clear();
+                        Console.WriteLine(s);
                         break;
                     case 2:
                         sm.DispayScoresUser(um.CurUser.Login);

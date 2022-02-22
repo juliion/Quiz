@@ -26,14 +26,6 @@ namespace QuizApp.Services
             _scores.Add(score);
             DataManager.SaveScores(_fileName, _scores);
         }
-        public void DisplayScore(Score score)
-        {
-            Console.Clear();
-            Quiz quiz = score.Quiz;
-            int allRightAnswers = quiz.Questions.Count;
-            Console.WriteLine($"Ваш результат {score.RightAnswers} из {allRightAnswers}");
-            Console.WriteLine($"{score.RightAnswers * 100 / allRightAnswers} %");
-        }
         public void DispayScoresUser(string login)
         {
             Console.Clear();
@@ -41,8 +33,7 @@ namespace QuizApp.Services
             {
                 if(score.User.Login == login)
                 {
-                    int allRightAnswers = score.Quiz.Questions.Count;
-                    Console.WriteLine($"{score.Quiz.Title} - {score.RightAnswers}/{allRightAnswers} ({score.RightAnswers * 100 / allRightAnswers}%)");
+                    Console.WriteLine(score);
                 }
             }
         }
