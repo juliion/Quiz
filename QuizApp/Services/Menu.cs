@@ -42,6 +42,12 @@ namespace QuizApp.Services
             Console.WriteLine("\t    1 - История");
             Console.WriteLine("\t    2 - Физика");
         }
+        public static void DisplayChangeSetMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("\t    1 - Изменить логин");
+            Console.WriteLine("\t    2 - Изменить пароль");
+        }
         public static void DisplayQuizzesTitlesMenu(List<string> titles)
         {
             Console.Clear();

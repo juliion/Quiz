@@ -68,6 +68,19 @@ namespace QuizApp
                         }
                         break;
                     case 4:
+                        Menu.DisplayChangeSetMenu();
+                        switch (Menu.GetChoice())
+                        {
+                            case 1:
+                                um.DisplayChangeLogin();
+                                break;
+                            case 2:
+                                um.DisplayChangePassword();
+                                break;
+                            default:
+                                Console.WriteLine("  Неверный символ!");
+                                break;
+                        }
                         break;
                     default:
                         Console.WriteLine("  Неверный символ!");
