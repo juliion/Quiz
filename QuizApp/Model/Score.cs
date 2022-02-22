@@ -22,5 +22,11 @@ namespace QuizApp.Model
             Quiz = quiz;
             RightAnswers = rightAnswers;
         }
+
+        public override string ToString()
+        {
+            int allRightAnswers = Quiz.Questions.Count;
+            return $"{RightAnswers} из {allRightAnswers}\n{RightAnswers * 100 / allRightAnswers} %";
+        }
     }
 }
