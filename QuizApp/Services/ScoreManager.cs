@@ -21,9 +21,38 @@ namespace QuizApp.Services
             else
                 _scores = new Scores();
         }
-        public void AddScore(User user, Quiz quiz)
+        public void AddScore(Score score)
         {
-
+            _scores.Add(score);
+            DataManager.SaveScores(_fileName, _scores);
+        }
+        public List<Score> GetTop(string quizTitle)
+        {
+            List<Score> scoresQuiz = _scores.FindAll((s) => s.Quiz.Title == quizTitle);
+            List<Score> topScores = scoresQuiz.OrderBy((s) => s.RightAnswers).ToList();
+            return topScores;
+        }
+        public void DispayScoresUser(string login)
+        {
+            Console.Clear();
+            foreach (var score in _scores)
+            {
+                if(score.User.Login == login)
+                {
+                    Console.WriteLine($"{score.Quiz.Title} - {score}");
+                }
+            }
+        }
+        public void DispayTopScores(int topAmount, string quizTitle)
+        {
+            Console.Clear();
+            List<Score> topScores = GetTop(quizTitle);
+            topAmount = topAmount > topScores.Count ? topScores.Count : topAmount;
+            for (int i = 0; i < topAmount; i++)
+            {
+                Score score = topScores[i];
+                Console.WriteLine($"{score.User.Login} - {score}");
+            }
         }
     }
 }
