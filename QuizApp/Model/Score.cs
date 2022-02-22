@@ -26,7 +26,7 @@ namespace QuizApp.Model
         public override string ToString()
         {
             int allRightAnswers = Quiz.Questions.Count;
-            return $"{RightAnswers} из {allRightAnswers}\n{RightAnswers * 100 / allRightAnswers} %";
+            return $"{RightAnswers} из {allRightAnswers} ({RightAnswers * 100 / allRightAnswers} %)";
         }
     }
 }
