@@ -22,7 +22,9 @@ namespace QuizApp.Services
         public static int GetChoice()
         {
             Console.Write("\n> Выберите нужное действие:");
-            return int.Parse(Console.ReadLine());
+            int choice;
+            int.TryParse(Console.ReadLine(), out choice);
+            return choice;
         }
         public static bool AllowContinue()
         {
