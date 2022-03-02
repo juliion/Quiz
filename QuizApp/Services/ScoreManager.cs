@@ -32,13 +32,24 @@ namespace QuizApp.Services
             List<Score> topScores = scoresQuiz.OrderByDescending((s) => s.RightAnswers).ToList();
             return topScores;
         }
+        public List<Score> GetScoresUser(string login)
+        {
+            return _scores.FindAll((s) => s.User.Login == login);
+        }
         public void DispayScoresUser(string login)
         {
             Console.Clear();
             Console.WriteLine();
-            foreach (var score in _scores)
+            List<Score> scoresUser = GetScoresUser(login);
+            if (scoresUser.Count == 0)
             {
-                if(score.User.Login == login)
+                Console.WriteLine();
+                Console.WriteLine("Нет результатов!");
+                Console.WriteLine("Похоже вы не прошли еще ни одной викторины.");
+            }
+            else 
+            {
+                foreach (var score in scoresUser)
                 {
                     Console.WriteLine($"  {score.Quiz.Title} - {score}");
                 }
