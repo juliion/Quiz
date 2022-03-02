@@ -29,7 +29,7 @@ namespace QuizApp.Services
         public List<Score> GetTop(string quizTitle)
         {
             List<Score> scoresQuiz = _scores.FindAll((s) => s.Quiz.Title == quizTitle);
-            List<Score> topScores = scoresQuiz.OrderBy((s) => s.RightAnswers).ToList();
+            List<Score> topScores = scoresQuiz.OrderByDescending((s) => s.RightAnswers).ToList();
             return topScores;
         }
         public void DispayScoresUser(string login)
