@@ -23,15 +23,6 @@ namespace QuizApp.Model
                 return false;
             return user.Password == password;
         }
-        public bool ChangeUserLogin(string login, string newLogin)
-        {
-            User user = FindUser(login);
-            if (CheckUserExists(newLogin))
-                return false;
-            this.Add(new User(newLogin, user.Password, user.Birthday));
-            this.Remove(user);
-            return true;
-        }
         public void ChangeUserPassword(string login, string newPassword)
         {
             User user = FindUser(login);

@@ -77,7 +77,6 @@ namespace QuizApp
                         switch (Menu.GetChoice())
                         {
                             case 1:
-                                um.DisplayChangeLogin();
                                 break;
                             case 2:
                                 um.DisplayChangePassword();
