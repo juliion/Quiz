@@ -28,16 +28,26 @@ namespace QuizApp.Services
             int selectedAnswer;
             for (int i = 0; i < questions.Count; i++)
             {
-                Question question = questions[i];
                 Console.Clear();
-                Console.WriteLine($"{i + 1}) {question.Text}");
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine($"\"{curQuiz.Title}\"");
+                Console.ResetColor();
+
+                Question question = questions[i];
+
+                Console.WriteLine();
+                Console.WriteLine($" {i + 1}) {question.Text}");
+                Console.WriteLine();
+
                 List<Answer> answers = question.Answers;
                 for (int j = 0; j < answers.Count; j++)
                 {
                     Answer answer = answers[j];
-                    Console.WriteLine($"{j + 1} - {answer.Text}");
+                    Console.WriteLine($"   {j + 1} - {answer.Text}");
                 }
+                Console.WriteLine();
+                Console.Write(">  ");
                 selectedAnswer = Int32.Parse(Console.ReadLine());
                 if (answers[selectedAnswer - 1].IsCorect)
                     countRightAnswers++;

@@ -31,18 +31,25 @@ namespace QuizApp.Services
                 Console.Clear();
                 if (!isSignUp)
                 {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Пользователь с таким логином уже существует!");
+                    Console.ResetColor();
                     Console.WriteLine("Попробуйте снова");
                 }
                 else
                 {
-                    Console.WriteLine("Введите дату рождения в формате(yy-mm-dd)");
+                    Console.WriteLine();
+                    Console.Write(">  Введите дату рождения в формате(yy-mm-dd): ");
                     birthday = Console.ReadLine();
                 }
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine("Придумайте логин и пароль");
-                Console.Write("Логин: ");
+                Console.ResetColor();
+                Console.Write(">  Логин: ");
                 login = Console.ReadLine();
-                Console.Write("Пароль: ");
+                Console.Write(">  Пароль: "); 
                 password = Console.ReadLine();
                 isSignUp = Users.SignUp(login, password, birthday);
             } while (!isSignUp);
@@ -58,13 +65,19 @@ namespace QuizApp.Services
                 Console.Clear();
                 if (!isSignIn)
                 {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Неверный логин или пароль!");
+                    Console.ResetColor();
                     Console.WriteLine("Попробуйте снова");
                 }
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine("Введите логин и пароль для входа");
-                Console.Write("Логин: ");
+                Console.ResetColor();
+                Console.Write(">  Логин: ");
                 login = Console.ReadLine();
-                Console.Write("Пароль: ");
+                Console.Write(">  Пароль: ");
                 password = Console.ReadLine();
                 isSignIn = Users.SignIn(login, password);
             } while (!isSignIn);
@@ -79,11 +92,17 @@ namespace QuizApp.Services
                 Console.Clear();
                 if (!loginChanged)
                 {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Пользователь с таким логином уже существует!");
+                    Console.ResetColor();
                     Console.WriteLine("Попробуйте снова");
                 }
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine($"Текущий логин: {CurUser.Login}");
-                Console.Write("Введите новый логин: ");
+                Console.ResetColor();
+                Console.Write(">  Введите новый логин: ");
                 newLogin = Console.ReadLine();
                 loginChanged = Users.ChangeUserLogin(CurUser.Login, newLogin);
             } while (!loginChanged);
@@ -99,14 +118,18 @@ namespace QuizApp.Services
                 Console.Clear();
                 if (!passwordCorrect)
                 {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Неверный пароль!");
+                    Console.ResetColor();
                     Console.WriteLine("Попробуйте снова");
                 }
-                Console.Write("Введите ваш старый пароль: ");
+                Console.WriteLine();
+                Console.Write(">  Введите ваш старый пароль: ");
                 password = Console.ReadLine();
                 passwordCorrect = Users.CheckPassword(CurUser.Login, password);
             } while (!passwordCorrect);
-            Console.Write("Введите новый пароль: ");
+            Console.Write(">  Введите новый пароль: ");
             newPassword = Console.ReadLine();
             Users.ChangeUserPassword(CurUser.Login, newPassword);
             DataManager.SaveUsers(_fileName, Users);
