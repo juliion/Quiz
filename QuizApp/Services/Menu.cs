@@ -12,53 +12,87 @@ namespace QuizApp.Services
         {
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("\t ======================================================");
-            Console.WriteLine("\t    1 - Начать новую викторину");
-            Console.WriteLine("\t    2 - Посмотреть результаты своих прошлых викторин");
-            Console.WriteLine("\t    3 - Посмотреть Топ-20 по конкретной викторине");
-            Console.WriteLine("\t    4 - Изменить настройки");
-            Console.WriteLine("\t ======================================================");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t==============================================================");
+            Console.ResetColor();
+            Console.WriteLine("\t\t\t1 - Начать новую викторину");
+            Console.WriteLine("\t\t\t2 - Посмотреть результаты своих прошлых викторин");
+            Console.WriteLine("\t\t\t3 - Посмотреть Топ-20 по конкретной викторине");
+            Console.WriteLine("\t\t\t4 - Изменить настройки");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t==============================================================");
+            Console.ResetColor();
         }
         public static int GetChoice()
         {
-            Console.Write("\n> Выберите нужное действие:");
+            Console.Write("\n>  Выберите нужное действие: ");
             int choice;
             int.TryParse(Console.ReadLine(), out choice);
             return choice;
         }
         public static bool AllowContinue()
         {
-            Console.Write("\n> Продлжить (y/n)? - ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("\n>  Продлжить (y/n)? - ");
+            Console.ResetColor();
             string answer = Console.ReadLine();
             return answer == "y" ? true : false;
         }
         public static void DisplayRegMenu()
         {
             Console.Clear();
-            Console.WriteLine("\t    1 - Войти");
-            Console.WriteLine("\t    2 - Зарегестрироваться");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("\t\t  Добро пожаловать в приложение \"Викторина\"! ");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
+            Console.WriteLine("\t\t\t1 - Войти");
+            Console.WriteLine("\t\t\t2 - Зарегестрироваться");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
         }
         public static void DisplayQiuzMenu()
         {
             Console.Clear();
-            Console.WriteLine("\t    1 - История");
-            Console.WriteLine("\t    2 - Физика");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
+            Console.WriteLine("\t\t\t1 - История");
+            Console.WriteLine("\t\t\t2 - Физика");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
         }
         public static void DisplayChangeSetMenu()
         {
             Console.Clear();
-            Console.WriteLine("\t    1 - Изменить логин");
-            Console.WriteLine("\t    2 - Изменить пароль");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
+            Console.WriteLine("\t\t\t1 - Изменить логин");
+            Console.WriteLine("\t\t\t2 - Изменить пароль");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
         }
         public static void DisplayQuizzesTitlesMenu(List<string> titles)
         {
             Console.Clear();
+            Console.WriteLine();
             int num = 1;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             foreach (var title in titles)
             {
                 Console.WriteLine($"\t    {num} - {title}");
                 num++;
             }
+            Console.ResetColor();
         }
     }
 }

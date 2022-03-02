@@ -35,23 +35,33 @@ namespace QuizApp.Services
         public void DispayScoresUser(string login)
         {
             Console.Clear();
+            Console.WriteLine();
             foreach (var score in _scores)
             {
                 if(score.User.Login == login)
                 {
-                    Console.WriteLine($"{score.Quiz.Title} - {score}");
+                    Console.WriteLine($"  {score.Quiz.Title} - {score}");
                 }
             }
         }
         public void DispayTopScores(int topAmount, string quizTitle)
         {
             Console.Clear();
+            Console.WriteLine();
             List<Score> topScores = GetTop(quizTitle);
-            topAmount = topAmount > topScores.Count ? topScores.Count : topAmount;
-            for (int i = 0; i < topAmount; i++)
+            if (topScores.Count == 0)
             {
-                Score score = topScores[i];
-                Console.WriteLine($"{score.User.Login} - {score}");
+                Console.WriteLine();
+                Console.WriteLine("Нет результатов по данной векторине!");
+            }
+            else
+            {
+                topAmount = topAmount > topScores.Count ? topScores.Count : topAmount;
+                for (int i = 0; i < topAmount; i++)
+                {
+                    Score score = topScores[i];
+                    Console.WriteLine($"{i + 1})  {score.User.Login} - {score}");
+                }
             }
         }
     }
