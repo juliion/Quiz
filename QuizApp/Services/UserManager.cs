@@ -83,32 +83,6 @@ namespace QuizApp.Services
             } while (!isSignIn);
             CurUser = Users.FindUser(login);
         }
-        public void DisplayChangeLogin()
-        {
-            string newLogin;
-            bool loginChanged = true;
-            do
-            {
-                Console.Clear();
-                if (!loginChanged)
-                {
-                    Console.WriteLine();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Пользователь с таким логином уже существует!");
-                    Console.ResetColor();
-                    Console.WriteLine("Попробуйте снова");
-                }
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                Console.WriteLine($"Текущий логин: {CurUser.Login}");
-                Console.ResetColor();
-                Console.Write(">  Введите новый логин: ");
-                newLogin = Console.ReadLine();
-                loginChanged = Users.ChangeUserLogin(CurUser.Login, newLogin);
-            } while (!loginChanged);
-            DataManager.SaveUsers(_fileName, Users);
-            CurUser = Users.FindUser(newLogin);
-        }
         public void DisplayChangePassword()
         {
             string newPassword, password;
@@ -132,6 +106,20 @@ namespace QuizApp.Services
             Console.Write(">  Введите новый пароль: ");
             newPassword = Console.ReadLine();
             Users.ChangeUserPassword(CurUser.Login, newPassword);
+            DataManager.SaveUsers(_fileName, Users);
+            CurUser = Users.FindUser(CurUser.Login);
+        }
+        public void DisplayChangeBirthday()
+        {
+            string newBirthday;
+            Console.Clear();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine($"Текущая дата рождения: {CurUser.Birthday.ToShortDateString()}");
+            Console.ResetColor();
+            Console.Write(">  Введите новую дату рождения в формате(yy-mm-dd): ");
+            newBirthday = Console.ReadLine();
+            Users.ChangeUserBirthday(CurUser.Login, newBirthday);
             DataManager.SaveUsers(_fileName, Users);
             CurUser = Users.FindUser(CurUser.Login);
         }

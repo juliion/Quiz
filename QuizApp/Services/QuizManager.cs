@@ -52,7 +52,7 @@ namespace QuizApp.Services
                 if (answers[selectedAnswer - 1].IsCorect)
                     countRightAnswers++;
             }
-            return new Score(curUser, curQuiz, countRightAnswers);
+            return new Score(curUser.Login, curQuiz, countRightAnswers);
         }
         public List<string> GetQuizzesTitles(QuizType type)
         {

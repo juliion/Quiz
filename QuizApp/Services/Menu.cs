@@ -75,7 +75,7 @@ namespace QuizApp.Services
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\t\t----------------------------------------------");
             Console.ResetColor();
-            Console.WriteLine("\t\t\t1 - Изменить логин");
+            Console.WriteLine("\t\t\t1 - Изменить дату рождения");
             Console.WriteLine("\t\t\t2 - Изменить пароль");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\t\t----------------------------------------------");
