@@ -12,5 +12,14 @@ namespace QuizApp.Model
         {
 
         }
+
+        public bool CheckScoreExists(string userLogin, string quizTitle)
+        {
+            return FindScore(userLogin, quizTitle) != null;
+        }
+        public Score FindScore(string userLogin, string quizTitle)
+        {
+            return this.FirstOrDefault(s => s.UserLogin == userLogin && s.QuizTitle == quizTitle);
+        }
     }
 }

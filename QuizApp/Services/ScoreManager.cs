@@ -23,6 +23,8 @@ namespace QuizApp.Services
         }
         public void AddScore(Score score)
         {
+            if (_scores.CheckScoreExists(score.UserLogin, score.QuizTitle))
+                _scores.Remove(_scores.FindScore(score.UserLogin, score.QuizTitle));
             _scores.Add(score);
             DataManager.SaveScores(_fileName, _scores);
         }
