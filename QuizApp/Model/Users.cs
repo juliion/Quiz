@@ -29,6 +29,13 @@ namespace QuizApp.Model
             this.Add(new User(login, newPassword, user.Birthday));
             this.Remove(user);
         }
+
+        public void ChangeUserBirthday(string login, string newBirthday)
+        {
+            User user = FindUser(login);
+            this.Add(new User(login, user.Password, DateTime.Parse(newBirthday)));
+            this.Remove(user);
+        }
         public bool CheckPassword(string login, string password)
         {
             return FindUser(login).Password == password;

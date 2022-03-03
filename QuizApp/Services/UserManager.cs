@@ -109,5 +109,19 @@ namespace QuizApp.Services
             DataManager.SaveUsers(_fileName, Users);
             CurUser = Users.FindUser(CurUser.Login);
         }
+        public void DisplayChangeBirthday()
+        {
+            string newBirthday;
+            Console.Clear();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine($"Текущая дата рождения: {CurUser.Birthday.ToShortDateString()}");
+            Console.ResetColor();
+            Console.Write(">  Введите новую дату рождения в формате(yy-mm-dd): ");
+            newBirthday = Console.ReadLine();
+            Users.ChangeUserBirthday(CurUser.Login, newBirthday);
+            DataManager.SaveUsers(_fileName, Users);
+            CurUser = Users.FindUser(CurUser.Login);
+        }
     }
 }
