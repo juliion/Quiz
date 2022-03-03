@@ -64,6 +64,7 @@ namespace QuizApp.Services
             Console.ResetColor();
             Console.WriteLine("\t\t\t1 - История");
             Console.WriteLine("\t\t\t2 - Физика");
+            Console.WriteLine("\t\t\t3 - Смешаная викторина");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\t\t----------------------------------------------");
             Console.ResetColor();

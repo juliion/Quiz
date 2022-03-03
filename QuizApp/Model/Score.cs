@@ -15,7 +15,6 @@ namespace QuizApp.Model
         public Score()
         {
         }
-
         public Score(string userLogin, Quiz quiz, int rightAnswers)
         {
             UserLogin = userLogin;
