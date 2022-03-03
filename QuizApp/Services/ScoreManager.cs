@@ -77,5 +77,26 @@ namespace QuizApp.Services
                 }
             }
         }
+        public void DispayUserScInTop(string quizTitle, Score userScore)
+        {
+            Console.WriteLine();
+            List<Score> topScores = GetTop(quizTitle);
+            int indUserSc = topScores.IndexOf(userScore);
+            int delta = 3;
+            int start = indUserSc > delta ? indUserSc - delta : 0;
+            int end = indUserSc < topScores.Count - delta - 1 ? indUserSc + delta : topScores.Count - 1;
+            for (int i = start; i <= end; i++)
+            {
+                Score score = topScores[i];
+                if(score.UserLogin == userScore.UserLogin)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine($"  {i + 1})  {score.UserLogin} - {score}");
+                    Console.ResetColor();
+                }
+                else
+                    Console.WriteLine($"{i + 1})  {score.UserLogin} - {score}");
+            }
+        }
     }
 }

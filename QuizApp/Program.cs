@@ -55,11 +55,17 @@ namespace QuizApp
                                 int choiceTitle = Int32.Parse(Console.ReadLine());
                                 chosenTitle = titles[choiceTitle - 1];
                             }
-                            Score s = qm.StartQuiz((QuizType)choiceQuiz - 1, chosenTitle, um.CurUser);
+                            Score s = qm.StartQuiz(chosenQuiz, chosenTitle, um.CurUser);
                             sm.AddScore(s);
                             Console.Clear();
                             Console.WriteLine();
                             Console.WriteLine($"Ваш результат: {s}");
+                            Console.WriteLine();
+                            Console.WriteLine("Место в топе:");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("-------------");
+                            Console.ResetColor();
+                            sm.DispayUserScInTop(chosenTitle, s);
                         }
                         break;
                     case 2:
