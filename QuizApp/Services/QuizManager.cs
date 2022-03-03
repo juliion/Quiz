@@ -19,6 +19,9 @@ namespace QuizApp.Services
             {
                 _quizzes.Add(DataManager.LoadQuiz(filename));
             }
+
+            int numRandQuestions = 20;
+            _quizzes.Add(new Quiz(QuizType.Mixed, "Смешаная викторина", GetRandomQuestions(numRandQuestions)));
         }
         public Score StartQuiz(QuizType quizType, string title, User curUser)
         {
@@ -53,6 +56,32 @@ namespace QuizApp.Services
                     countRightAnswers++;
             }
             return new Score(curUser.Login, curQuiz, countRightAnswers);
+        }
+
+        public List<Question> GetAllQuestions()
+        {
+            List<Question> res = new List<Question>();
+            foreach (var quiz in _quizzes)
+            {
+                foreach (var question in quiz.Questions)
+                {
+                    res.Add(question);
+                }
+            }
+            return res;
+        }
+        public List<Question> GetRandomQuestions(int num)
+        {
+            List<Question> res = new List<Question>();
+            List<Question> allQuestions = GetAllQuestions();
+            Random rnd = new Random();
+            for (int i = 0; i < num; i++)
+            {
+                int randInd = rnd.Next(0, allQuestions.Count - 1);
+                Question randQuestion = allQuestions[randInd];
+                res.Add(randQuestion);
+            }
+            return res;
         }
         public List<string> GetQuizzesTitles(QuizType type)
         {
