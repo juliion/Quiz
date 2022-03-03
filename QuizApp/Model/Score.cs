@@ -8,25 +8,25 @@ namespace QuizApp.Model
 {
     public class Score
     {
-        public User User { get; set; }
-        public Quiz Quiz { get; set; }
+        public string UserLogin { get; set; }
+        public string QuizTitle { get; set; }
         public int RightAnswers { get; set; }
-
+        public int Max { get; set; }
         public Score()
         {
         }
 
-        public Score(User user, Quiz quiz, int rightAnswers)
+        public Score(string userLogin, Quiz quiz, int rightAnswers)
         {
-            User = user;
-            Quiz = quiz;
+            UserLogin = userLogin;
+            QuizTitle = quiz.Title;
             RightAnswers = rightAnswers;
+            Max = quiz.Questions.Count;
         }
 
         public override string ToString()
         {
-            int allRightAnswers = Quiz.Questions.Count;
-            return $"{RightAnswers} из {allRightAnswers} ({RightAnswers * 100 / allRightAnswers} %)";
+            return $"{RightAnswers} из {Max} ({RightAnswers * 100 / Max} %)";
         }
     }
 }

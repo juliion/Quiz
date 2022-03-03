@@ -28,13 +28,13 @@ namespace QuizApp.Services
         }
         public List<Score> GetTop(string quizTitle)
         {
-            List<Score> scoresQuiz = _scores.FindAll((s) => s.Quiz.Title == quizTitle);
+            List<Score> scoresQuiz = _scores.FindAll((s) => s.QuizTitle == quizTitle);
             List<Score> topScores = scoresQuiz.OrderByDescending((s) => s.RightAnswers).ToList();
             return topScores;
         }
         public List<Score> GetScoresUser(string login)
         {
-            return _scores.FindAll((s) => s.User.Login == login);
+            return _scores.FindAll((s) => s.UserLogin == login);
         }
         public void DispayScoresUser(string login)
         {
@@ -51,7 +51,7 @@ namespace QuizApp.Services
             {
                 foreach (var score in scoresUser)
                 {
-                    Console.WriteLine($"  {score.Quiz.Title} - {score}");
+                    Console.WriteLine($"  {score.QuizTitle} - {score}");
                 }
             }
         }
@@ -71,7 +71,7 @@ namespace QuizApp.Services
                 for (int i = 0; i < topAmount; i++)
                 {
                     Score score = topScores[i];
-                    Console.WriteLine($"{i + 1})  {score.User.Login} - {score}");
+                    Console.WriteLine($"{i + 1})  {score.UserLogin} - {score}");
                 }
             }
         }
