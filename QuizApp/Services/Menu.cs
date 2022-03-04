@@ -19,6 +19,7 @@ namespace QuizApp.Services
             Console.WriteLine("\t\t\t2 - Посмотреть результаты своих прошлых викторин");
             Console.WriteLine("\t\t\t3 - Посмотреть Топ-20 по конкретной викторине");
             Console.WriteLine("\t\t\t4 - Изменить настройки");
+            Console.WriteLine("\t\t\t5 - Выход");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\t\t==============================================================");
             Console.ResetColor();
