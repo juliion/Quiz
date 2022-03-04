@@ -16,6 +16,7 @@ namespace QuizApp
             UserManager um = new UserManager();
             QuizManager qm = new QuizManager();
             ScoreManager sm = new ScoreManager();
+            bool exit = false;
             int choice;
             do
             {
@@ -101,12 +102,15 @@ namespace QuizApp
                                 break;
                         }
                         break;
+                    case 5:
+                        exit = true;
+                        break;
                     default:
                         Console.WriteLine("  Неверный символ!");
                         break;
                 }
-
-
+                if (exit)
+                    break;
             } while (Menu.AllowContinue());
             Console.WriteLine("\n\nПрограмма завершена!");
         }
