@@ -34,7 +34,7 @@ namespace QuizCreator.Services
         public static bool AllowContinue()
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("\n>  Продлжить (y/n)? - ");
+            Console.Write("\n>  Продолжить (y/n)? - ");
             Console.ResetColor();
             string answer = Console.ReadLine();
             return answer == "y" ? true : false;
@@ -52,6 +52,19 @@ namespace QuizCreator.Services
             Console.ResetColor();
             Console.WriteLine("\t\t\t1 - Войти");
             Console.WriteLine("\t\t\t2 - Зарегестрироваться");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
+        }
+        public static void DisplayQiuzMenu()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
+            Console.WriteLine("\t\t\t1 - История");
+            Console.WriteLine("\t\t\t2 - Физика");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\t\t----------------------------------------------");
             Console.ResetColor();
