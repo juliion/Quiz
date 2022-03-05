@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using System.Text.Json.Serialization;
-using QuizApp.Model;
+using QuizModel;
 
 namespace QuizApp.Services
 {

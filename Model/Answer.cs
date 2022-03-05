@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuizApp.Model
+namespace QuizModel
 {
-    public class Question
+    public class Answer
     {
         public string Text { get; set; }
-        public List<Answer> Answers { get; set; }
+        public bool IsCorect{ get; set; }
 
-        public Question()
+        public Answer()
         {
         }
 
-        public Question(string text, List<Answer> answers)
+        public Answer(string text, bool isCorect)
         {
             Text = text;
-            Answers = answers;
+            IsCorect = isCorect;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuizApp.Model
+namespace QuizModel
 {
     public class Scores : List<Score>
     {
