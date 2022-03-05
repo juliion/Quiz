@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp", "QuizApp\QuizApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizModel", "QuizModel\QuizModel.csproj", "{D59C8BF6-110B-4EB1-828E-2C1DC8EA2346}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizCreator", "QuizCreator\QuizCreator.csproj", "{3529F76F-647C-4BD0-A07D-D12C4AE9E4B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D59C8BF6-110B-4EB1-828E-2C1DC8EA2346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D59C8BF6-110B-4EB1-828E-2C1DC8EA2346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D59C8BF6-110B-4EB1-828E-2C1DC8EA2346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3529F76F-647C-4BD0-A07D-D12C4AE9E4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3529F76F-647C-4BD0-A07D-D12C4AE9E4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3529F76F-647C-4BD0-A07D-D12C4AE9E4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3529F76F-647C-4BD0-A07D-D12C4AE9E4B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
