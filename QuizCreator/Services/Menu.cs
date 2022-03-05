@@ -16,10 +16,9 @@ namespace QuizCreator.Services
             Console.WriteLine("\t\t==============================================================");
             Console.ResetColor();
             Console.WriteLine("\t\t\t1 - Создать новую викторину");
-            Console.WriteLine("\t\t\t2 - Посмотреть мою викторину");
-            Console.WriteLine("\t\t\t3 - Редактировать викторину");
-            Console.WriteLine("\t\t\t4 - Удалить викторину");
-            Console.WriteLine("\t\t\t5 - Выход");
+            Console.WriteLine("\t\t\t2 - Редактировать викторину");
+            Console.WriteLine("\t\t\t3 - Удалить викторину");
+            Console.WriteLine("\t\t\t4 - Выход");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\t\t==============================================================");
             Console.ResetColor();

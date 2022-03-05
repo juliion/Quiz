@@ -42,8 +42,6 @@ namespace QuizCreator
                     case 3:
                         break;
                     case 4:
-                        break;
-                    case 5:
                         exit = true;
                         break;
                     default:
