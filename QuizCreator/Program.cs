@@ -14,6 +14,7 @@ namespace QuizCreator
         static void Main(string[] args)
         {
             UserManager um = new UserManager();
+            Manager m = new Manager();
             bool exit = false;
             int choice;
             do
@@ -36,6 +37,7 @@ namespace QuizCreator
                 switch (Menu.GetChoice())
                 {
                     case 1:
+                        m.AddQuiz(Creator.CreateQuiz());
                         break;
                     case 2:
                         break;
