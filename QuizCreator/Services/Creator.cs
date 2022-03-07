@@ -18,10 +18,25 @@ namespace QuizCreator.Services
             QuizType type = (QuizType)choiceQuiz - 1;
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("Введите заголовок: ");
-            Console.Write(">  ");
-            string title = Console.ReadLine();
-            Console.Clear();
+            string title;
+            bool titleExists = false;
+            do
+            {
+                if (titleExists)
+                {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Викторина с таким заголовком уже существует!");
+                    Console.ResetColor();
+                    Console.WriteLine("Придумайте новый");
+                    Console.WriteLine();
+                }
+                Console.WriteLine("Введите заголовок: ");
+                Console.Write(">  ");
+                title = Console.ReadLine();
+                titleExists = new Manager().CheckQuizExists(title);
+                Console.Clear();
+            } while (titleExists);
             Console.WriteLine();
             Console.Write(">  Введите количество вопросов: ");
             int numQuestion = int.Parse(Console.ReadLine());

@@ -30,6 +30,13 @@ namespace QuizCreator.Services
             string filenameQuiz = _pathQuizFolder + @"/" + newQuiz.Title + ".json";
             DataManager.SaveQuiz(filenameQuiz, newQuiz);
         }
-
+        public bool CheckQuizExists(string title)
+        {
+            return FindQuiz(title) != null;
+        }
+        public Quiz FindQuiz(string title)
+        {
+            return _createdQuizzes.FirstOrDefault(q => q.Title == title);
+        }
     }
 }
