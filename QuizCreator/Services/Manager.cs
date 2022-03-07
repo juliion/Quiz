@@ -27,8 +27,9 @@ namespace QuizCreator.Services
         public void AddQuiz(Quiz newQuiz)
         {
             _createdQuizzes.Add(newQuiz);
-            string filenameQuiz = _pathQuizFolder + @"/" + newQuiz.Title;
+            string filenameQuiz = _pathQuizFolder + @"/" + newQuiz.Title + ".json";
             DataManager.SaveQuiz(filenameQuiz, newQuiz);
         }
+
     }
 }
