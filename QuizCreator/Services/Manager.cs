@@ -12,11 +12,12 @@ namespace QuizCreator.Services
     public class Manager
     {
         private List<Quiz> _createdQuizzes;
-
+        private string _pathQuizFolder;
         public Manager()
         {
+            _pathQuizFolder = @"../../../QuizApp/Data/Quizzes";
             _createdQuizzes = new List<Quiz>();
-            string[] filenames = Directory.GetFiles(@"../../../QuizApp/Data/Quizzes");
+            string[] filenames = Directory.GetFiles(_pathQuizFolder);
             foreach (var filename in filenames)
             {
                 _createdQuizzes.Add(DataManager.LoadQuiz(filename));
@@ -26,7 +27,7 @@ namespace QuizCreator.Services
         public void AddQuiz(Quiz newQuiz)
         {
             _createdQuizzes.Add(newQuiz);
-            string filenameQuiz = @"../../../QuizApp/Data/Quizzes/" + newQuiz.Title;
+            string filenameQuiz = _pathQuizFolder + @"/" + newQuiz.Title;
             DataManager.SaveQuiz(filenameQuiz, newQuiz);
         }
     }
