@@ -68,5 +68,18 @@ namespace QuizCreator.Services
             Console.WriteLine("\t\t----------------------------------------------");
             Console.ResetColor();
         }
+        public static void DisplayQuizzesTitlesMenu(List<string> titles)
+        {
+            Console.Clear();
+            Console.WriteLine();
+            int num = 1;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            foreach (var title in titles)
+            {
+                Console.WriteLine($"\t    {num} - {title}");
+                num++;
+            }
+            Console.ResetColor();
+        }
     }
 }

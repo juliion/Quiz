@@ -38,5 +38,22 @@ namespace QuizCreator.Services
         {
             return _createdQuizzes.FirstOrDefault(q => q.Title == title);
         }
+        public void RemoveQuiz(string title)
+        {
+            Quiz remQuiz = FindQuiz(title);
+            string filenameQuiz = _pathQuizFolder + @"/" + remQuiz.Title + ".json";
+            _createdQuizzes.Remove(remQuiz);
+            File.Delete(filenameQuiz);
+        }
+        public List<string> GetQuizzesTitles(QuizType type)
+        {
+            List<string> res = new List<string>();
+            foreach (var quiz in _createdQuizzes)
+            {
+                if (quiz.Type == type)
+                    res.Add(quiz.Title);
+            }
+            return res;
+        }
     }
 }

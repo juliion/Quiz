@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using QuizCreator.Services;
 using QuizApp.Services;
+using QuizModel;
 using Menu = QuizCreator.Services.Menu;
 
 namespace QuizCreator
@@ -42,6 +43,20 @@ namespace QuizCreator
                     case 2:
                         break;
                     case 3:
+                        Menu.DisplayQiuzMenu();
+                        Console.Write(">  Выберете область знаний викторины: ");
+                        int choiceQuiz = Int32.Parse(Console.ReadLine());
+                        QuizType type = (QuizType)choiceQuiz - 1;
+                        List<string> titles = m.GetQuizzesTitles(type);
+                        Menu.DisplayQuizzesTitlesMenu(titles);
+                        Console.WriteLine();
+                        Console.Write(">  Выберете тему: ");
+                        int choiceTitle = Int32.Parse(Console.ReadLine());
+                        string chosenTitle = titles[choiceTitle - 1];
+                        m.RemoveQuiz(chosenTitle);
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine($"Викторина \"{chosenTitle}\" успешно удалена!");
                         break;
                     case 4:
                         exit = true;
