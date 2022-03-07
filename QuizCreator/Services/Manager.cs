@@ -27,7 +27,7 @@ namespace QuizCreator.Services
         public void AddQuiz(Quiz newQuiz)
         {
             _createdQuizzes.Add(newQuiz);
-            string filenameQuiz = @"../../../QuizApp/Data/Quizzes/Quiz" + _createdQuizzes.Count;
+            string filenameQuiz = @"../../../QuizApp/Data/Quizzes/" + newQuiz.Title;
             _filenames[_filenames.Length - 1] = filenameQuiz;
             DataManager.SaveQuiz(filenameQuiz, newQuiz);
         }
