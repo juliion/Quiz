@@ -41,22 +41,46 @@ namespace QuizCreator
                         m.AddQuiz(Creator.CreateQuiz());
                         break;
                     case 2:
+                        {
+                            Menu.DisplayQiuzMenu();
+                            Console.Write(">  Выберете область знаний викторины: ");
+                            int choiceQuiz = Int32.Parse(Console.ReadLine());
+                            QuizType type = (QuizType)choiceQuiz - 1;
+                            List<string> titles = m.GetQuizzesTitles(type);
+                            Menu.DisplayQuizzesTitlesMenu(titles);
+                            Console.WriteLine();
+                            Console.Write(">  Выберете тему: ");
+                            int choiceTitle = Int32.Parse(Console.ReadLine());
+                            string chosenTitle = titles[choiceTitle - 1];
+
+                            Quiz newQuiz = Editor.EditQuiz(m.FindQuiz(chosenTitle));
+                            m.RemoveQuiz(chosenTitle);
+                            m.AddQuiz(newQuiz);
+
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine($"Викторина \"{chosenTitle}\" успешно изменена!");
+                        }
                         break;
                     case 3:
-                        Menu.DisplayQiuzMenu();
-                        Console.Write(">  Выберете область знаний викторины: ");
-                        int choiceQuiz = Int32.Parse(Console.ReadLine());
-                        QuizType type = (QuizType)choiceQuiz - 1;
-                        List<string> titles = m.GetQuizzesTitles(type);
-                        Menu.DisplayQuizzesTitlesMenu(titles);
-                        Console.WriteLine();
-                        Console.Write(">  Выберете тему: ");
-                        int choiceTitle = Int32.Parse(Console.ReadLine());
-                        string chosenTitle = titles[choiceTitle - 1];
-                        m.RemoveQuiz(chosenTitle);
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine($"Викторина \"{chosenTitle}\" успешно удалена!");
+                        {
+                            Menu.DisplayQiuzMenu();
+                            Console.Write(">  Выберете область знаний викторины: ");
+                            int choiceQuiz = Int32.Parse(Console.ReadLine());
+                            QuizType type = (QuizType)choiceQuiz - 1;
+                            List<string> titles = m.GetQuizzesTitles(type);
+                            Menu.DisplayQuizzesTitlesMenu(titles);
+                            Console.WriteLine();
+                            Console.Write(">  Выберете тему: ");
+                            int choiceTitle = Int32.Parse(Console.ReadLine());
+                            string chosenTitle = titles[choiceTitle - 1];
+
+                            m.RemoveQuiz(chosenTitle);
+
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine($"Викторина \"{chosenTitle}\" успешно удалена!");
+                        }
                         break;
                     case 4:
                         exit = true;

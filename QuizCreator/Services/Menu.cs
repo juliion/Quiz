@@ -81,5 +81,18 @@ namespace QuizCreator.Services
             }
             Console.ResetColor();
         }
+        public static void DisplayEditMenu()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
+            Console.WriteLine("\t\t\t1 - Добавить вопрос");
+            Console.WriteLine("\t\t\t2 - Удалить вопрос");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\t\t----------------------------------------------");
+            Console.ResetColor();
+        }
     }
 }
