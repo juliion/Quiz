@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using QuizApp.Model;
+using QuizModel;
 
 namespace QuizApp.Services
 {
@@ -14,7 +15,7 @@ namespace QuizApp.Services
         public QuizManager()
         {
             _quizzes = new List<Quiz>();
-            _filenames = new string[] { @"..\..\Data\Quiz1.json", @"..\..\Data\Quiz2.json", @"..\..\Data\Quiz3.json" };
+            _filenames = Directory.GetFiles(@"../../Data/Quizzes");
             foreach (var filename in _filenames)
             {
                 _quizzes.Add(DataManager.LoadQuiz(filename));

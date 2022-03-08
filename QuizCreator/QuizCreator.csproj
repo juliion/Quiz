@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E97514D3-AB47-45A6-8F0E-0435A72D77EF}</ProjectGuid>
+    <ProjectGuid>{3529F76F-647C-4BD0-A07D-D12C4AE9E4B0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>QuizApp</RootNamespace>
-    <AssemblyName>QuizApp</AssemblyName>
+    <RootNamespace>QuizCreator</RootNamespace>
+    <AssemblyName>QuizCreator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,10 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
-    <Reference Include="System.Text.Json, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,23 +46,26 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DataManager.cs" />
+    <Compile Include="Services\Creator.cs" />
+    <Compile Include="Services\Editor.cs" />
+    <Compile Include="Services\Manager.cs" />
     <Compile Include="Services\Menu.cs" />
-    <Compile Include="Services\QuizManager.cs" />
-    <Compile Include="Services\ScoreManager.cs" />
-    <Compile Include="Services\UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Data\Quizzes\Quiz1.json" />
-    <None Include="Data\Quizzes\Quiz2.json" />
-    <None Include="Data\Quizzes\Quiz3.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QuizApp\QuizApp.csproj">
+      <Project>{e97514d3-ab47-45a6-8f0e-0435a72d77ef}</Project>
+      <Name>QuizApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuizModel\QuizModel.csproj">
-      <Project>{f142f07f-c4f9-46d3-abd4-03d2d74c1df8}</Project>
+      <Project>{d59c8bf6-110b-4eb1-828e-2c1dc8ea2346}</Project>
       <Name>QuizModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

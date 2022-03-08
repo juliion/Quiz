@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using QuizApp.Services;
-using QuizApp.Model;
+using QuizModel;
 
 namespace QuizApp
 {
