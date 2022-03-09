@@ -57,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Data\Quizzes\Quiz1.json" />
-    <None Include="Data\Quizzes\Quiz2.json" />
-    <None Include="Data\Quizzes\Quiz3.json" />
+    <None Include="Data\Quizzes\История и культура Древнего Египта.json" />
+    <None Include="Data\Quizzes\Кинематика.json" />
+    <None Include="Data\Quizzes\Электростатика.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QuizModel\QuizModel.csproj">
