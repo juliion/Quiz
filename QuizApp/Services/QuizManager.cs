@@ -11,25 +11,30 @@ namespace QuizApp.Services
     public class QuizManager
     {
         private List<Quiz> _quizzes;
-        private string[] _filenames;
+        private string _pathQuizFolder;
         public QuizManager()
         {
-            _quizzes = new List<Quiz>();
-            _filenames = Directory.GetFiles(@"../../Data/Quizzes");
-            foreach (var filename in _filenames)
+            _pathQuizFolder = @"../../Data/Quizzes";
+            _quizzes = LoadAllQuizzes();
+            int numQuestions = 20;
+            _quizzes.Add(GetMixedQuiz(numQuestions));
+        }
+        private List<Quiz> LoadAllQuizzes()
+        {
+            List<Quiz> quizzes = new List<Quiz>();
+            string[] filenames = Directory.GetFiles(_pathQuizFolder);
+            foreach (var filename in filenames)
             {
-                _quizzes.Add(DataManager.LoadQuiz(filename));
+                quizzes.Add(DataManager.LoadQuiz(filename));
             }
-
-            int numRandQuestions = 20;
-            _quizzes.Add(new Quiz(QuizType.Mixed, "Смешаная викторина", GetRandomQuestions(numRandQuestions)));
+            return quizzes;
         }
         public Score StartQuiz(QuizType quizType, string title, User curUser)
         {
             Quiz curQuiz = _quizzes.Find((quiz) => quiz.Type == quizType && quiz.Title == title);
             List <Question> questions = curQuiz.Questions;
+
             int countRightAnswers = 0;
-            int selectedAnswer;
             for (int i = 0; i < questions.Count; i++)
             {
                 Console.Clear();
@@ -37,6 +42,12 @@ namespace QuizApp.Services
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine($"\"{curQuiz.Title}\"");
                 Console.ResetColor();
+
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Если правильных ответов несколько, введите их через пробелы (пример: 1 2)");
+                Console.ResetColor();
+
 
                 Question question = questions[i];
 
@@ -52,13 +63,17 @@ namespace QuizApp.Services
                 }
                 Console.WriteLine();
                 Console.Write(">  ");
-                selectedAnswer = Int32.Parse(Console.ReadLine());
-                if (answers[selectedAnswer - 1].IsCorect)
-                    countRightAnswers++;
+                List<int> userAnswers = Console.ReadLine().Split(' ').
+                                    Where(a => !string.IsNullOrWhiteSpace(a)).
+                                    Select(a => int.Parse(a)).ToList();
+                countRightAnswers += userAnswers.FindAll(a => answers[a - 1].IsCorect).Count;
             }
             return new Score(curUser.Login, curQuiz, countRightAnswers);
         }
-
+        private Quiz GetMixedQuiz(int numQuestions)
+        {
+            return new Quiz(QuizType.Mixed, "Смешаная викторина", GetRandomQuestions(numQuestions));
+        }
         public List<Question> GetAllQuestions()
         {
             List<Question> res = new List<Question>();

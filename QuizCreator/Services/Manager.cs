@@ -16,14 +16,18 @@ namespace QuizCreator.Services
         public Manager()
         {
             _pathQuizFolder = @"../../../QuizApp/Data/Quizzes";
-            _createdQuizzes = new List<Quiz>();
+            _createdQuizzes = LoadAllQuizzes();
+        }
+        private List<Quiz> LoadAllQuizzes()
+        {
+            List<Quiz> quizzes = new List<Quiz>();
             string[] filenames = Directory.GetFiles(_pathQuizFolder);
             foreach (var filename in filenames)
             {
-                _createdQuizzes.Add(DataManager.LoadQuiz(filename));
+                quizzes.Add(DataManager.LoadQuiz(filename));
             }
+            return quizzes;
         }
-
         public void AddQuiz(Quiz newQuiz)
         {
             _createdQuizzes.Add(newQuiz);

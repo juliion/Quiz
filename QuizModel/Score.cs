@@ -20,7 +20,20 @@ namespace QuizModel
             UserLogin = userLogin;
             QuizTitle = quiz.Title;
             RightAnswers = rightAnswers;
-            Max = quiz.Questions.Count;
+            Max = CountMax(quiz);
+        }
+        public int CountMax(Quiz quiz)
+        {
+            int max = 0;
+            foreach (var question in quiz.Questions)
+            {
+                foreach (var answer in question.Answers)
+                {
+                    if (answer.IsCorect)
+                        max++;
+                }
+            }
+            return max;
         }
 
         public override string ToString()
