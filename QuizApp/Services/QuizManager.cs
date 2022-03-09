@@ -11,12 +11,13 @@ namespace QuizApp.Services
     public class QuizManager
     {
         private List<Quiz> _quizzes;
-        private string[] _filenames;
+        private string _pathQuizFolder;
         public QuizManager()
         {
+            _pathQuizFolder = @"../../Data/Quizzes";
             _quizzes = new List<Quiz>();
-            _filenames = Directory.GetFiles(@"../../Data/Quizzes");
-            foreach (var filename in _filenames)
+            string[] filenames = Directory.GetFiles(_pathQuizFolder);
+            foreach (var filename in filenames)
             {
                 _quizzes.Add(DataManager.LoadQuiz(filename));
             }
