@@ -15,15 +15,19 @@ namespace QuizApp.Services
         public QuizManager()
         {
             _pathQuizFolder = @"../../Data/Quizzes";
-            _quizzes = new List<Quiz>();
+            _quizzes = LoadAllQuizzes();
+            int numQuestions = 20;
+            _quizzes.Add(GetMixedQuiz(numQuestions));
+        }
+        private List<Quiz> LoadAllQuizzes()
+        {
+            List<Quiz> quizzes = new List<Quiz>();
             string[] filenames = Directory.GetFiles(_pathQuizFolder);
             foreach (var filename in filenames)
             {
-                _quizzes.Add(DataManager.LoadQuiz(filename));
+                quizzes.Add(DataManager.LoadQuiz(filename));
             }
-
-            int numRandQuestions = 20;
-            _quizzes.Add(new Quiz(QuizType.Mixed, "Смешаная викторина", GetRandomQuestions(numRandQuestions)));
+            return quizzes;
         }
         public Score StartQuiz(QuizType quizType, string title, User curUser)
         {
@@ -59,7 +63,10 @@ namespace QuizApp.Services
             }
             return new Score(curUser.Login, curQuiz, countRightAnswers);
         }
-
+        private Quiz GetMixedQuiz(int numQuestions)
+        {
+            return new Quiz(QuizType.Mixed, "Смешаная викторина", GetRandomQuestions(numQuestions));
+        }
         public List<Question> GetAllQuestions()
         {
             List<Question> res = new List<Question>();
