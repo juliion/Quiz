@@ -33,8 +33,8 @@ namespace QuizApp.Services
         {
             Quiz curQuiz = _quizzes.Find((quiz) => quiz.Type == quizType && quiz.Title == title);
             List <Question> questions = curQuiz.Questions;
+
             int countRightAnswers = 0;
-            int selectedAnswer;
             for (int i = 0; i < questions.Count; i++)
             {
                 Console.Clear();
@@ -42,6 +42,12 @@ namespace QuizApp.Services
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine($"\"{curQuiz.Title}\"");
                 Console.ResetColor();
+
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Если правильных ответов несколько, введите их через пробелы (пример: 1 2)");
+                Console.ResetColor();
+
 
                 Question question = questions[i];
 
@@ -57,9 +63,10 @@ namespace QuizApp.Services
                 }
                 Console.WriteLine();
                 Console.Write(">  ");
-                selectedAnswer = Int32.Parse(Console.ReadLine());
-                if (answers[selectedAnswer - 1].IsCorect)
-                    countRightAnswers++;
+                List<int> userAnswers = Console.ReadLine().Split(' ').
+                                    Where(a => !string.IsNullOrWhiteSpace(a)).
+                                    Select(a => int.Parse(a)).ToList();
+                countRightAnswers += userAnswers.FindAll(a => answers[a - 1].IsCorect).Count;
             }
             return new Score(curUser.Login, curQuiz, countRightAnswers);
         }
