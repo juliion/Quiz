@@ -16,7 +16,7 @@ namespace QuizApp.Services
 
         public UserManager()
         {
-            _fileName = @"..\..\Data\users.dat";
+            _fileName = @"..\..\Data\users.json";
             if (File.Exists(_fileName))
                 Users = DataManager.LoadUsers(_fileName);
             else
