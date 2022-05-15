@@ -14,17 +14,18 @@ namespace QuizApp.Services
     {
         public static void SaveUsers(string path, Users users)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
-                bf.Serialize(fs, users);
+            string jsonString = JsonSerializer.Serialize<Users>(users, new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            });
+            File.WriteAllText(path, jsonString);
         }
         public static Users LoadUsers(string path)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            Users res;
-            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-                res = (Users)bf.Deserialize(fs);
-            return res;
+            string jsonString = File.ReadAllText(path);
+            Users users = JsonSerializer.Deserialize<Users>(jsonString);
+            return users;
         }
         public static void SaveQuiz(string path, Quiz quiz)
         {
