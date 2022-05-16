@@ -46,6 +46,7 @@
     <Compile Include="Question.cs" />
     <Compile Include="Quiz.cs" />
     <Compile Include="QuizType.cs" />
+    <Compile Include="Quizzes.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Scores.cs" />
     <Compile Include="User.cs" />
