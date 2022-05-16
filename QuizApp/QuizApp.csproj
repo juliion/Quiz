@@ -49,23 +49,26 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DataManager.cs" />
+    <Compile Include="Services\JSONReader.cs" />
+    <Compile Include="Services\JSONWriter.cs" />
     <Compile Include="Services\Menu.cs" />
     <Compile Include="Services\QuizManager.cs" />
+    <Compile Include="Services\Reader.cs" />
     <Compile Include="Services\ScoreManager.cs" />
     <Compile Include="Services\UserManager.cs" />
+    <Compile Include="Services\Writer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Data\Quizzes\История и культура Древнего Египта.json" />
-    <None Include="Data\Quizzes\Кинематика.json" />
-    <None Include="Data\Quizzes\Электростатика.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QuizModel\QuizModel.csproj">
       <Project>{f142f07f-c4f9-46d3-abd4-03d2d74c1df8}</Project>
       <Name>QuizModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
