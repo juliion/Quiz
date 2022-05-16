@@ -9,7 +9,7 @@ namespace QuizCreator.Services
 {
     public static class Creator
     {
-        public static Quiz CreateQuiz()
+        public static Quiz CreateQuiz(Manager manager)
         {
             List<Question> questions = new List<Question>();
             Menu.DisplayQiuzMenu();
@@ -34,7 +34,7 @@ namespace QuizCreator.Services
                 Console.WriteLine("Введите заголовок: ");
                 Console.Write(">  ");
                 title = Console.ReadLine();
-                titleExists = new Manager().CheckQuizExists(title);
+                titleExists = manager.CheckQuizExists(title);
                 Console.Clear();
             } while (titleExists);
             Console.WriteLine();
