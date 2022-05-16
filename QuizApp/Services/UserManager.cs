@@ -10,18 +10,18 @@ namespace QuizApp.Services
 {
     public class UserManager
     {
-        private string _fileName;
+        private Reader<Users> _usersReader;
+        private Writer<Users> _usersWriter;
         public Users Users { get; set; }
         public User CurUser { get; set; }
 
-        public UserManager()
+        public UserManager(Reader<Users> usersReader, Writer<Users> usersWriter)
         {
-            _fileName = @"..\..\Data\users.json";
-            if (File.Exists(_fileName))
-                Users = DataManager.LoadUsers(_fileName);
-            else
-                Users = new Users();
+            _usersReader = usersReader;
+            _usersWriter = usersWriter;
+            Users = _usersReader.Read() == null ? new Users() : _usersReader.Read();
         }
+
         public void DisplaySignUp()
         {
             string login, password, birthday = "";
@@ -53,7 +53,7 @@ namespace QuizApp.Services
                 password = Console.ReadLine();
                 isSignUp = Users.SignUp(login, password, birthday);
             } while (!isSignUp);
-            DataManager.SaveUsers(_fileName, Users);
+            _usersWriter.Write(Users);
             CurUser = Users.FindUser(login);
         }
         public void DisplaySignIn()
@@ -106,7 +106,7 @@ namespace QuizApp.Services
             Console.Write(">  Введите новый пароль: ");
             newPassword = Console.ReadLine();
             Users.ChangeUserPassword(CurUser.Login, newPassword);
-            DataManager.SaveUsers(_fileName, Users);
+            _usersWriter.Write(Users);
             CurUser = Users.FindUser(CurUser.Login);
         }
         public void DisplayChangeBirthday()
@@ -120,7 +120,7 @@ namespace QuizApp.Services
             Console.Write(">  Введите новую дату рождения в формате(yy-mm-dd): ");
             newBirthday = Console.ReadLine();
             Users.ChangeUserBirthday(CurUser.Login, newBirthday);
-            DataManager.SaveUsers(_fileName, Users);
+            _usersWriter.Write(Users);
             CurUser = Users.FindUser(CurUser.Login);
         }
     }

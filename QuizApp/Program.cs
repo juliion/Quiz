@@ -13,9 +13,20 @@ namespace QuizApp
     {
         static void Main(string[] args)
         {
-            UserManager um = new UserManager();
-            QuizManager qm = new QuizManager();
-            ScoreManager sm = new ScoreManager();
+            string fileQuizzes = @"../../../QuizCreator/Data/Quizzes.json";
+            string fileUsers = @"../../Data/Users.json";
+            string fileScores = @"../../Data/Scores.json";
+            Reader<Users> usersReader = new JSONReader<Users>(fileUsers);
+            Writer<Users> usersWriter = new JSONWriter<Users>(fileUsers);
+
+            Reader<Scores> scoresReader = new JSONReader<Scores>(fileScores);
+            Writer<Scores> scoresWriter = new JSONWriter<Scores>(fileScores);
+
+            Reader<Quizzes> quizzesReader = new JSONReader<Quizzes>(fileQuizzes);
+
+            UserManager um = new UserManager(usersReader, usersWriter);
+            QuizManager qm = new QuizManager(quizzesReader);
+            ScoreManager sm = new ScoreManager(scoresReader, scoresWriter);
             bool exit = false;
             int choice;
             do

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using QuizCreator.Services;
 using QuizApp.Services;
 using QuizModel;
+using System.IO;
 using Menu = QuizCreator.Services.Menu;
 
 namespace QuizCreator
@@ -14,8 +15,14 @@ namespace QuizCreator
     {
         static void Main(string[] args)
         {
-            UserManager um = new UserManager();
-            Manager m = new Manager();
+            string fileQuizzes = @"../../Data/Quizzes.json";
+            string fileUsers = @"../../Data/Users.json";
+            Reader<Users> usersReader = new JSONReader<Users>(Path.GetFullPath(fileUsers));
+            Writer<Users> usersWriter = new JSONWriter<Users>(Path.GetFullPath(fileUsers));
+            Reader<Quizzes> quizzesReader = new JSONReader<Quizzes>(fileQuizzes);
+            Writer<Quizzes> quizzesWriiter = new JSONWriter<Quizzes>(fileQuizzes);
+            UserManager um = new UserManager(usersReader, usersWriter);
+            Manager m = new Manager(quizzesReader, quizzesWriiter);
             bool exit = false;
             int choice;
             do
@@ -38,7 +45,7 @@ namespace QuizCreator
                 switch (Menu.GetChoice())
                 {
                     case 1:
-                        m.AddQuiz(Creator.CreateQuiz());
+                        m.AddQuiz(Creator.CreateQuiz(m));
                         break;
                     case 2:
                         {

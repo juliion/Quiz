@@ -11,28 +11,19 @@ namespace QuizCreator.Services
 {
     public class Manager
     {
-        private List<Quiz> _createdQuizzes;
-        private string _pathQuizFolder;
-        public Manager()
+        private Quizzes _createdQuizzes;
+        private Reader<Quizzes> _quizzesReader;
+        private Writer<Quizzes> _quizzesWriter;
+        public Manager(Reader<Quizzes> quizzesReader, Writer<Quizzes> quizzesWriter)
         {
-            _pathQuizFolder = @"../../../QuizApp/Data/Quizzes";
-            _createdQuizzes = LoadAllQuizzes();
-        }
-        private List<Quiz> LoadAllQuizzes()
-        {
-            List<Quiz> quizzes = new List<Quiz>();
-            string[] filenames = Directory.GetFiles(_pathQuizFolder);
-            foreach (var filename in filenames)
-            {
-                quizzes.Add(DataManager.LoadQuiz(filename));
-            }
-            return quizzes;
+            _quizzesReader = quizzesReader;
+            _quizzesWriter = quizzesWriter;
+            _createdQuizzes = _quizzesReader.Read() == null ? new Quizzes() : _quizzesReader.Read();
         }
         public void AddQuiz(Quiz newQuiz)
         {
             _createdQuizzes.Add(newQuiz);
-            string filenameQuiz = _pathQuizFolder + @"/" + newQuiz.Title + ".json";
-            DataManager.SaveQuiz(filenameQuiz, newQuiz);
+            _quizzesWriter.Write(_createdQuizzes);
         }
         public bool CheckQuizExists(string title)
         {
@@ -45,9 +36,8 @@ namespace QuizCreator.Services
         public void RemoveQuiz(string title)
         {
             Quiz remQuiz = FindQuiz(title);
-            string filenameQuiz = _pathQuizFolder + @"/" + remQuiz.Title + ".json";
             _createdQuizzes.Remove(remQuiz);
-            File.Delete(filenameQuiz);
+            _quizzesWriter.Write(_createdQuizzes);
         }
         public List<string> GetQuizzesTitles(QuizType type)
         {
