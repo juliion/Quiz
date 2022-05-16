@@ -10,24 +10,14 @@ namespace QuizApp.Services
 {
     public class QuizManager
     {
-        private List<Quiz> _quizzes;
-        private string _pathQuizFolder;
-        public QuizManager()
+        private Reader<Quizzes> _quizzesReader;
+        private Quizzes _quizzes;
+        public QuizManager(Reader<Quizzes> quizzesReader)
         {
-            _pathQuizFolder = @"../../Data/Quizzes";
-            _quizzes = LoadAllQuizzes();
-            int numQuestions = 20;
+            _quizzesReader = quizzesReader;
+            _quizzes = _quizzesReader.Read() == null ? new Quizzes() : _quizzesReader.Read();
+            int numQuestions = GetAllQuestions().Count < 20 ? GetAllQuestions().Count : 20;
             _quizzes.Add(GetMixedQuiz(numQuestions));
-        }
-        private List<Quiz> LoadAllQuizzes()
-        {
-            List<Quiz> quizzes = new List<Quiz>();
-            string[] filenames = Directory.GetFiles(_pathQuizFolder);
-            foreach (var filename in filenames)
-            {
-                quizzes.Add(DataManager.LoadQuiz(filename));
-            }
-            return quizzes;
         }
         public Score StartQuiz(QuizType quizType, string title, User curUser)
         {

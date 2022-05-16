@@ -10,23 +10,22 @@ namespace QuizApp.Services
 {
     public class ScoreManager
     {
-        private string _fileName;
+        private Reader<Scores> _scoresReader;
+        private Writer<Scores> _scoresWriter;
         private Scores _scores;
 
-        public ScoreManager()
+        public ScoreManager(Reader<Scores> scoresReader, Writer<Scores> scoresWriter)
         {
-            _fileName = @"..\..\Data\Scores.json";
-            if (File.Exists(_fileName))
-                _scores = DataManager.LoadScores(_fileName);
-            else
-                _scores = new Scores();
+            _scoresReader = scoresReader;
+            _scoresWriter = scoresWriter;
+            _scores = _scoresReader.Read() == null ? new Scores() : _scoresReader.Read();
         }
         public void AddScore(Score score)
         {
             if (_scores.CheckScoreExists(score.UserLogin, score.QuizTitle))
                 _scores.Remove(_scores.FindScore(score.UserLogin, score.QuizTitle));
             _scores.Add(score);
-            DataManager.SaveScores(_fileName, _scores);
+            _scoresWriter.Write(_scores);
         }
         public List<Score> GetTop(string quizTitle)
         {
